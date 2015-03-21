@@ -1,0 +1,64 @@
+{
+  "name": "react-maxwell-modal",
+  "version": "0.9.0",
+  "description": "A react component for awesome modals",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/jest-cli/bin/jest.js"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/preprocessor.js",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/node_modules/"
+    ],
+    "collectCoverage": true,
+    "collectCoverageOnlyFrom": {
+      "src/Header.jsx": true,
+      "src/Modal.jsx": true,
+      "src/ConfirmModal.jsx": true,
+      "src/AlertModal.jsx": true
+    },
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
+  },
+  "author": "James Hrisho",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^6.3.3",
+    "gulp": "^3.8.10",
+    "gulp-jshint": "^1.9.0",
+    "gulp-react": "^2.0.0",
+    "react-tools": "^0.13.0",
+    "vinyl-source-stream": "^1.0.0"
+  },
+  "keywords": [
+    "modal",
+    "react-component",
+    "alert",
+    "confirm",
+    "maxwellhealth"
+  ],
+  "browserify": {
+    "transform": [
+      [
+        "reactify"
+      ]
+    ]
+  },
+  "dependencies": {
+    "classnames": "^1.1.4",
+    "coveralls": "^2.11.2",
+    "dot-component": "^0.1.1",
+    "jest-cli": "^0.4.0",
+    "lodash": "^2.4.1",
+    "react": "^0.13.0",
+    "jquery": "^2.1.1",
+    "reactify": "^0.17.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/maxwellhealth/react-table-acula.git"
+  }
+}
