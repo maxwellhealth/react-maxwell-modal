@@ -1,3 +1,3 @@
-exports.Modal = require('./src/Modal');
-exports.ConfirmModal = require('./src/ConfirmModal');
-exports.AlertModal = require('./src/AlertModal');
+exports.Modal = require('./src/Modal.jsx');
+exports.ConfirmModal = require('./src/ConfirmModal.jsx');
+exports.AlertModal = require('./src/AlertModal.jsx');
