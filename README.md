@@ -8,32 +8,16 @@
 
 ##Install
 
-Requires jquery and bootstrap
 
 `npm install react-maxwell-modal --save`
 
 
 ##Usage
 
-There are three types of modals available
+There are four types of modals available
 
-### Modal
+### Content Modal
 
-This is the basic modal. It has two types of configurations
-
-* Content
-* Header, Body, Footer
-```javascript
-
-$('body').append('<div id="modal-container"></div>');
-  React.render(<Modal
-      body="foo"
-      title="foo"
-      show={true}
-      onYes={function(){console.log('onYes'); return true;}}
-      onShow={function(){console.log('onLoad');}}
-      onHide={function(){console.log('onHide');}} />, document.getElementById("modal-container"));
-```
 
 ####Props
 
@@ -41,114 +25,227 @@ $('body').append('<div id="modal-container"></div>');
 
 |Prop|Type| Required|
 |-----|----|--------|
-|footer|any| false|
-|header|any| false|
-|content|any| true|
-|body|any| false|
+|onShow|function| false|
+|onHide|function| false|
+|isOpen|bool| false|
+|shouldCloseOnOverlayClick|bool| false|
+
+
+```javascript
+import { ContentModal } from 'react-maxwell-modal';
+
+class ContentModalExample extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false
+    }
+    this.displayName = 'ContentModalExample';
+    this.toggleModal = this.toggleModal.bind(this);
+  }
+
+  toggleModal() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
+  }
+  render() {
+    return (
+      <div className="ClickMeMaxwellModal">
+      <button onClick={this.toggleModal}>Load Modal</button>
+      <ContentModal
+      ref="mymodal"
+      isOpen={this.state.isOpen}
+      shouldCloseOnOverlayClick={true}
+      onHide={this.toggleModal}
+      >
+        <span>A bunch of useless stuff</span>
+        </ContentModal>
+      </div>
+      );
+  }
+}
+
+```
+
+
+### Maxwell Modal
+
+
+####Props
+
+
+|Prop|Type| Required|
+|-----|----|--------|
+|footer|ReactComponent/String| false|
 |onShow|function| false|
 |onHide|function| false|
 |title|string| false|
+|isOpen|bool| false|
 |dismissable|bool| false|
-|show|bool| false|
-
-####Content
-
-If the content property is present it will operate in content mode.
+|shouldCloseOnOverlayClick|bool| false|
 
 ```javascript
-$('body').append('<div id="modal-container"></div>');
-React.render(<Modal
-    content="foo"
+import { MaxwellModal } from 'react-maxwell-modal';
 
-    show={true}
-    onShow={function(){console.log('onLoad');}}
-    onHide={function(){console.log('onHide');}} />, document.getElementById("modal-container"));
+class MaxwellModalExample extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false
+    }
+    this.displayName = 'MaxwellModalExample';
+    this.toggleModal = this.toggleModal.bind(this);
+  }
+
+  toggleModal() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
+  }
+  render() {
+    return (
+      <div className="ClickMeMaxwellModal">
+      <button onClick={this.toggleModal}>Load Modal</button>
+      <MaxwellModal
+      ref="mymodal"
+      isOpen={this.state.isOpen}
+      title={"this is a title"}
+      shouldCloseOnOverlayClick={true}
+      onHide={this.toggleModal}
+      >
+        <span>A bunch of useless stuff</span>
+        </MaxwellModal>
+      </div>
+      );
+  }
+}
+
 ```
-This will create a modal that contains the word foo and nothing else.
-
-Content can take a DOM element, rendered html, rendered backbone view, handlebars template output or a function.
-
-
-####Header,Body,Footer
-Header,Body,Footer works similarly except it uses 3 different views for each section of the bootstrap modal.
-
-```javascript
-$('body').append('<div id="modal-container"></div>');
-React.render(<Modal
-    content={"foo"}
-    title={'foo'}
-    show={true}
-    onShow={function(){console.log('onLoad');}}
-    onHide={function(){console.log('onHide');}} />, document.getElementById("modal-container"));
-```
-Note the handlebars template for the header, rendered html for the body.
-These could take a rendered backbone view.
 
 
 ###Confirm Modal
 
-A replacement for the confirm box
-
+A replacement for the confirm box.
+This produces a modal with two buttons, yes and no. their labels are configurable as well as what occurs on yes and on no.
 
 ####Props
 
 |Prop|Type| Required|
 |-----|----|--------|
+|onYes|function| false|
+|onNo|function| false|
 |yesLabel|string| false|
 |noLabel|string| false|
-|onNo|function| false|
-|onYes|function| false|
-|header|any| false|
-|content|any| true|
-|body|any| false|
 |onShow|function| false|
 |onHide|function| false|
 |title|string| false|
+|isOpen|bool| false|
 |dismissable|bool| false|
-|show|bool| false|
+|shouldCloseOnOverlayClick|bool| false|
 
 
 ```javascript
-$('body').append('<div id="modal-container"></div>');
-React.render(<ConfirmModal
-    body="foo"
-    yesLabel="foo"
-    show={true}
-    onYes={function(){console.log('onYes'); return true;}}
-    onNo={function(){console.log('onNo'); return true;}}
-    onShow={function(){console.log('onLoad');}}
-    onHide={function(){console.log('onHide');}} />, document.getElementById("modal-container"));
-  ```
-This produces a modal with two buttons, yes and no. their labels are configurable as well as what occurs on yes and on no.
+import { ConfirmModal } from 'react-maxwell-modal';
+
+class ConfirmModalExample extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false
+    }
+    this.displayName = 'ConfirmModalExample';
+    this.toggleModal = this.toggleModal.bind(this);
+    this.onYes = this.onYes.bind(this);
+    this.onNo = this.onNo.bind(this);
+  }
+  onYes(closeModal) {
+    closeModal(true)
+  }
+  onNo(closeModal) {
+    closeModal(true)
+  }
+  toggleModal() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
+  }
+  render() {
+    return (
+      <div className="ClickMeMaxwellModal">
+      <button onClick={this.toggleModal}>Load Modal</button>
+      <ConfirmModal
+      ref="mymodal"
+      isOpen={this.state.isOpen}
+      shouldCloseOnOverlayClick={true}
+      onHide={this.toggleModal}
+      onYes={this.onYes}
+      onNo={this.onNo}
+      >
+        <span>A bunch of useless stuff</span>
+        </ConfirmModal>
+      </div>
+      );
+  }
+}
+
+```
+
 
 ###Alert Modal
 
 A replacement for the alert box
 
-
 ####Props
 
 |Prop|Type| Required|
 |-----|----|--------|
-|yesLabel|string| false|
 |onYes|function| false|
-|header|any| false|
-|content|any| true|
-|body|any| false|
+|yesLabel|string| false|
 |onShow|function| false|
 |onHide|function| false|
 |title|string| false|
+|isOpen|bool| false|
 |dismissable|bool| false|
-|show|bool| false|
+|shouldCloseOnOverlayClick|bool| false|
 
+```javascript
+import { AlertModal } from 'react-maxwell-modal';
 
-```
-$('body').append('<div id="modal-container"></div>');
-  React.render(<AlertModal
-      body="foo"
-      yesLabel="foo"
-      show={true}
-      onYes={function(){console.log('onYes'); return true;}}
-      onShow={function(){console.log('onLoad');}}
-      onHide={function(){console.log('onHide');}} />, document.getElementById("modal-container"));
+class AlertModalExample extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false
+    }
+    this.displayName = 'AlertModalExample';
+    this.toggleModal = this.toggleModal.bind(this);
+    this.onYes = this.onYes.bind(this);
+  }
+  onYes(closeModal) {
+    closeModal(true)
+  }
+  toggleModal() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
+  }
+  render() {
+    return (
+      <div className="ClickMeMaxwellModal">
+      <button onClick={this.toggleModal}>Load Modal</button>
+      <AlertModal
+      ref="mymodal"
+      isOpen={this.state.isOpen}
+      shouldCloseOnOverlayClick={true}
+      onHide={this.toggleModal}
+      onYes={this.onYes}
+      >
+        <span>A bunch of useless stuff</span>
+        </AlertModal>
+      </div>
+      );
+  }
+}
+
 ```

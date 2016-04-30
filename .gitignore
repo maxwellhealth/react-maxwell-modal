@@ -5,3 +5,5 @@ lib-cov
 logs
 .log
 build
+lib
+.nyc_output
