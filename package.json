@@ -4,9 +4,9 @@
   "description": "A react component for awesome modals",
   "main": "lib/index.js",
   "scripts": {
-    "test": "ava",
+    "test": "nyc ava src/**.test.js ",
     "clean": "rimraf lib dist",
-    "lint": "node_modules/.bin/eslint src/**.jsx",
+    "lint": "node_modules/.bin/eslint src/**.js",
     "build:lib": "babel src --out-dir lib",
     "build:example": "cd example && npm install",
     "build": "npm run build:lib",
