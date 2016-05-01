@@ -4,13 +4,11 @@ node_js:
 - '4.2'
 - '4.1'
 - '4.0'
-- '0.12'
-- '0.11'
-- '0.10'
 install:
 - npm install
 - npm install react
 script:
+- npm run test
 - npm run build
 after_success:
 - './node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls'
