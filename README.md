@@ -26,7 +26,7 @@ There are four types of modals available
 |Prop|Type| Required|
 |-----|----|--------|
 |onShow|function| false|
-|onHide|function| false|
+|onHide|function| true|
 |isOpen|bool| false|
 |shouldCloseOnOverlayClick|bool| false|
 
@@ -79,7 +79,7 @@ class ContentModalExample extends React.Component {
 |-----|----|--------|
 |footer|ReactComponent/String| false|
 |onShow|function| false|
-|onHide|function| false|
+|onHide|function| true|
 |title|string| false|
 |isOpen|bool| false|
 |dismissable|bool| false|
@@ -138,7 +138,7 @@ This produces a modal with two buttons, yes and no. their labels are configurabl
 |yesLabel|string| false|
 |noLabel|string| false|
 |onShow|function| false|
-|onHide|function| false|
+|onHide|function| true|
 |title|string| false|
 |isOpen|bool| false|
 |dismissable|bool| false|
@@ -203,7 +203,7 @@ A replacement for the alert box
 |onYes|function| false|
 |yesLabel|string| false|
 |onShow|function| false|
-|onHide|function| false|
+|onHide|function| true|
 |title|string| false|
 |isOpen|bool| false|
 |dismissable|bool| false|

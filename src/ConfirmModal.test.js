@@ -15,7 +15,8 @@ global.navigator = window.navigator;
 test("should construct a confirm modal with text and yes and no buttons", t => {
   let container = document.getElementById("foo")
   Modal.setAppElement(container);
-  render(<div><ConfirmModal isOpen={true}>Hi there</ConfirmModal></div>, container);
+  render(<div><ConfirmModal isOpen={true}  onHide={() => {
+  }}>Hi there</ConfirmModal></div>, container);
   t.truthy(container.innerHTML.includes("Hi there"))
   //the yes and no buttons
   t.truthy(container.innerHTML.includes("Yes"))

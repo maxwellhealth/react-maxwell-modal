@@ -6,7 +6,8 @@ import { shallow } from 'enzyme';
 
 
 test("should construct a modal with text", t => {
-  const wrapper = shallow(<ContentModal>Hi there</ContentModal>);
+  const wrapper = shallow(<ContentModal  onHide={() => {
+  }}>Hi there</ContentModal>);
   t.is(wrapper.find('.modal-content').text(), "Hi there");
   t.is(wrapper.find('.modal-content').length, 1);
 })
@@ -17,7 +18,8 @@ test("should construct a modal with custom style", t => {
       top: '20px'
     }
   }
-  const wrapper = shallow(<ContentModal customStyles={customStyles}>Hi there</ContentModal>);
+  const wrapper = shallow(<ContentModal customStyles={customStyles}  onHide={() => {
+  }}>Hi there</ContentModal>);
   let props = wrapper.find(Modal).props();
   t.deepEqual(props.style, {
     overlay: {

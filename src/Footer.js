@@ -1,8 +1,3 @@
-var React = require('react');
+import React from 'react';
+export default (props) => (<div className="modal-footer">{props.children}</div>);
 
-module.exports = React.createClass({
-  displayName: 'MaxwellModalFooter',
-  render: function () {
-    return(<div className="modal-footer">{this.props.children}</div>);
-  }
-});

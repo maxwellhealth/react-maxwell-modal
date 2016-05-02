@@ -12,6 +12,7 @@ export default React.createClass({
   },
 
   propTypes: {
+    onHide: React.PropTypes.func.isRequired,
     yesLabel: React.PropTypes.string,
     noLabel: React.PropTypes.string
   },

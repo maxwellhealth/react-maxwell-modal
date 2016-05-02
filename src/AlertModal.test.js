@@ -15,7 +15,8 @@ global.navigator = window.navigator;
 test("AlertModal - should construct a confirm modal with text and yes and no buttons", t => {
   let container = document.getElementById("foo")
   Modal.setAppElement(container);
-  render(<div><AlertModal isOpen={true}>Hi there</AlertModal></div>, container);
+  render(<div><AlertModal isOpen={true} onHide={() => {
+  }}>Hi there</AlertModal></div>, container);
   t.truthy(container.innerHTML.includes("Hi there"))
   //the yes and no buttons
   t.truthy(container.innerHTML.includes("Yes"))

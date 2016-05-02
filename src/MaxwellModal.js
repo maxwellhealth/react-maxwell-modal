@@ -4,12 +4,12 @@ import Header from './Header'
 import Footer from './Footer'
 
 class MaxwellModal extends React.Component {
-    constructor(props) {
-        super(props);
-        this.displayName = 'MaxwellModal';
-    }
-    render() {
-        return <ContentModal {...this.props}>
+  constructor(props) {
+    super(props);
+    this.displayName = 'MaxwellModal';
+  }
+  render() {
+    return <ContentModal {...this.props}>
             <Header  {...this.props}/>
             <div className="modal-body">
             {this.props.children}
@@ -18,10 +18,12 @@ class MaxwellModal extends React.Component {
               {this.props.footer}
             </Footer>
         </ContentModal>;
-    }
+  }
 }
 MaxwellModal.defaultProps = {
-      footer: ""
-    }
-
+  footer: ""
+}
+MaxwellModal.propTypes = {
+  onHide: React.PropTypes.func.isRequired,
+};
 export default MaxwellModal;
