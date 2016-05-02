@@ -1,5 +1,4 @@
-/** @jsx React.DOM */
-var React = require('react/addons');
+var React = require('react');
 
 module.exports = React.createClass({
   displayName: 'MaxwellModalHeader',
@@ -7,17 +6,15 @@ module.exports = React.createClass({
     dismissable: React.PropTypes.bool,
     title: React.PropTypes.string
   },
+
   render: function () {
-    var dismissable = this.props.dismissable ? (<button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>) : '';
+    var dismissable = this.props.dismissable ? (<button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.props.onRequestClose}><span aria-hidden="true">&times;</span></button>) : '';
     var header = (
       <div>
         {dismissable}
         <h3 >{this.props.title}</h3>
       </div>
       );
-    if (this.props.content) {
-      header = this.props.content;
-    }
     return(<div className="modal-header">{header}</div>);
   }
 });

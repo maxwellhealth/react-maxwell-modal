@@ -2,36 +2,57 @@
   "name": "react-maxwell-modal",
   "version": "0.9.2",
   "description": "A react component for awesome modals",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "./node_modules/jest-cli/bin/jest.js"
+    "test": "nyc ava src/**.test.js ",
+    "clean": "rimraf lib dist",
+    "lint": "node_modules/.bin/eslint src/**.js",
+    "build:lib": "babel src --out-dir lib",
+    "build:example": "cd example && npm install",
+    "build": "npm run build:lib",
+    "check": "npm run lint",
+    "preversion": "npm run clean && npm run check",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags && npm run clean",
+    "prepublish": "npm run clean && npm run build"
   },
-  "jest": {
-    "scriptPreprocessor": "<rootDir>/preprocessor.js",
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "<rootDir>/node_modules/"
-    ],
-    "collectCoverage": true,
-    "collectCoverageOnlyFrom": {
-      "src/Header.jsx": true,
-      "src/Modal.jsx": true,
-      "src/ConfirmModal.jsx": true,
-      "src/AlertModal.jsx": true
-    },
-    "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/react"
+  "ava": {
+    "babel": "inherit",
+    "require": [
+      "./setup-test-env.js"
+    ]
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text",
+      "html"
     ]
   },
   "author": "James Hrisho",
   "license": "MIT",
   "devDependencies": {
-    "browserify": "^6.3.3",
-    "gulp": "^3.8.10",
-    "gulp-jshint": "^1.9.0",
-    "gulp-react": "^2.0.0",
-    "react-tools": "^0.13.0",
-    "vinyl-source-stream": "^1.0.0"
+    "ava": "^0.14.0",
+    "babel": "^6.5.2",
+    "babel-cli": "^6.6.5",
+    "babel-core": "^6.7.7",
+    "babel-loader": "^6.2.4",
+    "babel-polyfill": "^6.7.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-register": "^6.7.2",
+    "coveralls": "^2.11.9",
+    "enzyme": "^2.2.0",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^2.1.1",
+    "eslint-plugin-react": "^3.13.1",
+    "jsdom": "^6.4.1",
+    "nyc": "^6.4.0",
+    "react-addons-test-utils": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "rimraf": "^2.5.2",
+    "sinon": "^1.17.3",
+    "webpack": "^1.13.0"
   },
   "keywords": [
     "modal",
@@ -40,22 +61,12 @@
     "confirm",
     "maxwellhealth"
   ],
-  "browserify": {
-    "transform": [
-      [
-        "reactify"
-      ]
-    ]
-  },
   "dependencies": {
-    "classnames": "^1.1.4",
-    "coveralls": "^2.11.2",
-    "dot-component": "^0.1.1",
-    "jest-cli": "^0.4.0",
-    "lodash": "^2.4.1",
-    "react": "^0.13.0",
-    "jquery": "^2.1.1",
-    "reactify": "^0.17.1"
+    "lodash": "^4.11.1",
+    "react-modal": "^1.2.1"
+  },
+  "peerDependencies": {
+    "react": "^0.13.0 || ^0.14.0 || ^15.0.1"
   },
   "repository": {
     "type": "git",
