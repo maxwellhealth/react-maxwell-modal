@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from 'react-modal';
 import Header from './Header'
 import _ from 'lodash'
-class MaxwellContentModal extends React.Component {
+class MaxwellContentModal extends React . Component {
   constructor(props) {
     super(props);
     this.displayName = 'MaxwellModal';
@@ -11,7 +11,8 @@ class MaxwellContentModal extends React.Component {
 
     var customStyles = _.extend({
       overlay: {
-        backgroundColor: 'rgba(0, 0, 0, 0.5)'
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        zIndex: 10000
       }
     }, this.props.customStyles);
 
