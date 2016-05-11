@@ -23,7 +23,8 @@ test("should construct a modal with custom style", t => {
   let props = wrapper.find(Modal).props();
   t.deepEqual(props.style, {
     overlay: {
-      backgroundColor: 'rgba(0, 0, 0, 0.5)'
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      zIndex: 10000
     },
     content: {
       top: '20px'
