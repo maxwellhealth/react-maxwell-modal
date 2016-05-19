@@ -23,6 +23,18 @@ test("AlertModal - should construct a confirm modal with text and yes and no but
 
 });
 
+
+test("should display custom yes button", t => {
+  let container = document.getElementById("foo")
+  Modal.setAppElement(container);
+  const onHide = sinon.spy()
+  let customButton = <button  className="modal-buttons btn btn-primary yes-button">Hold your horses buster</button>
+  render(<div><AlertModal isOpen={true} onYes={true} onHide={onHide} yesButton={customButton}>Hi there</AlertModal></div>, container);
+  const button = container.querySelector('.yes-button');
+  t.is(button.textContent, "Hold your horses buster");
+
+})
+
 test("AlertModal - should close modal if onYes == true", t => {
   let container = document.getElementById("foo")
   Modal.setAppElement(container);
