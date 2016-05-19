@@ -29,10 +29,11 @@ export default React.createClass({
     buttonCall.call(this, 'onNo')
   },
   render: function() {
+    var continueButton = this.props.continueButton
     var confirmFooter = (
     <div>
         <button className="modal-buttons btn no-button" onClick={this.noButton}>{this.props.noLabel}</button>
-        <button className="modal-buttons btn btn-primary yes-button" onClick={this.yesButton} >{this.props.yesLabel}</button>
+        {continueButton ? continueButton : (<button className="modal-buttons btn btn-primary yes-button" onClick={this.yesButton} >{this.props.yesLabel}</button>)}
       </div>
     );
     return (
