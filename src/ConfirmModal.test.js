@@ -23,7 +23,26 @@ test("should construct a confirm modal with text and yes and no buttons", t => {
   t.truthy(container.innerHTML.includes("No"))
 
 });
+test("should display custom yes button", t => {
+  let container = document.getElementById("foo")
+  Modal.setAppElement(container);
+  const onHide = sinon.spy()
+  let customButton = <button  className="modal-buttons btn btn-primary yes-button">Hold your horses buster</button>
+  render(<div><ConfirmModal isOpen={true} onYes={true} onHide={onHide} yesButton={customButton}>Hi there</ConfirmModal></div>, container);
+  const button = container.querySelector('.yes-button');
+  t.is(button.textContent, "Hold your horses buster");
 
+})
+test("should display custom no button", t => {
+  let container = document.getElementById("foo")
+  Modal.setAppElement(container);
+  const onHide = sinon.spy()
+  let customButton = <button  className="modal-buttons btn btn-primary no-button">Hold your horses buster</button>
+  render(<div><ConfirmModal isOpen={true} onYes={true} onHide={onHide} noButton={customButton}>Hi there</ConfirmModal></div>, container);
+  const button = container.querySelector('.no-button');
+  t.is(button.textContent, "Hold your horses buster");
+
+})
 test("should close modal if onYes == true", t => {
   let container = document.getElementById("foo")
   Modal.setAppElement(container);
