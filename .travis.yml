@@ -6,7 +6,7 @@ node_js:
 - '4.0'
 install:
 - npm install
-- npm install react@^0.14.0
+- npm install react
 script:
 - npm run test
 - npm run build
