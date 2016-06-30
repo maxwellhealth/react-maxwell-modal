@@ -1,6 +1,6 @@
 {
   "name": "react-maxwell-modal",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "A react component for awesome modals",
   "main": "lib/index.js",
   "scripts": {

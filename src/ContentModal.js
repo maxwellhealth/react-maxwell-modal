@@ -16,6 +16,8 @@ class MaxwellContentModal extends React . Component {
       }
     }, this.props.customStyles);
 
+    var classes = "modal-content " + this.props.className;
+
     return <Modal
       isOpen={this.props.isOpen}
       onAfterOpen={this.props.onShow}
@@ -30,6 +32,11 @@ class MaxwellContentModal extends React . Component {
     </Modal>;
   }
 }
+
+MaxwellContentModal.defaultProps = {
+  className: ''
+}
+
 MaxwellContentModal.propTypes = {
   onHide: React.PropTypes.func.isRequired,
 };
