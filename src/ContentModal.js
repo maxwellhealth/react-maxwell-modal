@@ -22,7 +22,7 @@ class MaxwellContentModal extends React . Component {
       isOpen={this.props.isOpen}
       onAfterOpen={this.props.onShow}
       onRequestClose={this.props.onHide}
-      className="modal-dialog"
+      className={classes}
       closeTimeoutMS={0}
       shouldCloseOnOverlayClick={this.props.shouldCloseOnOverlayClick}
       style={customStyles}>
