@@ -16,7 +16,7 @@ class MaxwellContentModal extends React . Component {
       }
     }, this.props.customStyles);
 
-    var classes = "modal-content " + this.props.className;
+    var classes = "modal-dialog " + this.props.customClassName;
 
     return <Modal
       isOpen={this.props.isOpen}
