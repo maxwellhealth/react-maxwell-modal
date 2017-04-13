@@ -1,4 +1,4 @@
-#React-Maxwell-Modal
+# React-Maxwell-Modal
 
 [![Build Status](https://travis-ci.org/maxwellhealth/react-maxwell-modal.svg?branch=master)](https://travis-ci.org/maxwellhealth/react-maxwell-modal)
 
@@ -6,20 +6,20 @@
 
 [React-Maxwell-Modal Github Page](http://maxwellhealth.github.io/react-maxwell-modal)
 
-##Install
+## Install
 
 
 `npm install react-maxwell-modal --save`
 
 
-##Usage
+## Usage
 
 There are four types of modals available
 
 ### Content Modal
 
 
-####Props
+#### Props
 
 
 
@@ -72,7 +72,7 @@ class ContentModalExample extends React.Component {
 ### Maxwell Modal
 
 
-####Props
+#### Props
 
 
 |Prop|Type| Required|
@@ -124,10 +124,10 @@ class MaxwellModalExample extends React.Component {
 ```
 
 
-###Confirm Modal
+### Confirm Modal
 
 A replacement for the confirm box.
-This produces a modal with two buttons, yes and no. their labels are configurable as well as what occurs on yes and on no.
+This produces a modal with two buttons, `yes` and `no`. Their labels are configurable, as well as what occurs on `yes` and `no`.
 
 ####Props
 
@@ -192,11 +192,11 @@ class ConfirmModalExample extends React.Component {
 ```
 
 
-###Alert Modal
+### Alert Modal
 
 A replacement for the alert box
 
-####Props
+#### Props
 
 |Prop|Type| Required|
 |-----|----|--------|
