@@ -6,6 +6,7 @@
   "scripts": {
     "test": "nyc ava src/**.test.js ",
     "clean": "rimraf lib dist",
+    "types": "types.d.ts",
     "lint": "node_modules/.bin/eslint src/**.js",
     "build:lib": "babel src --out-dir lib",
     "build:example": "cd example && npm install",
